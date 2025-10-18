@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Find Shortest Path</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Find</button>
+</form>
+
+{% if result %}
+  {% if result.airports %}
+    <h3>Connected Airports from <strong>{{ result.start }}</strong> (Sorted by Distance)</h3>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 50%;">
+      <thead>
+        <tr style="background-color: #f2f2f2;">
+          <th>Airport Code</th>
+          <th>Distance (km)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for airport_code, distance in result.airports %}
+          <tr 
+            {% if forloop.first %} 
+              style="background-color: #d1fae5; font-weight: bold;" 
+              title="Nearest Airport"
+            {% endif %}
+          >
+            <td>{{ airport_code }}</td>
+            <td>{{ distance }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p style="margin-top: 10px;">
+      🟩 <strong>Highlighted row</strong> = Nearest Airport
+    </p>
+
+  {% else %}
+    <div style="color: red; margin-top: 15px;">
+      <strong>{{ result }}</strong>
+    </div>
+  {% endif %}
+{% endif %}
+{% endblock %}
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% block content %}
+<h2>Find Shortest Path</h2>
+<form method="POST">{% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Find</button>
+</form>
+
+{% if result %}
+  <h3>Result:</h3>
+  {% if result.distance %}
+    <p><strong>Path:</strong> {{ result.path }}</p>
+    <p><strong>Total Distance:</strong> {{ result.distance }} km</p>
+  {% else %}
+    <p>{{ result }}</p>
+  {% endif %}
+{% endif %}
+{% endblock %} {% endcomment %}
+
+

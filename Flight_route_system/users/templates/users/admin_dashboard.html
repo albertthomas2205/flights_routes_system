@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Welcome, {{ user.username }}! You can manage airports below.</p>
+<a href="{% url 'airport_create' %}">Add New Airport</a> |
+<a href="{% url 'airport_list' %}">View Airports</a> |
+<a href="{% url 'add_next_airport' %}">Link Next Airport</a>
+{% endblock %}

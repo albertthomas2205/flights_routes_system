@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Delete Airport</h2>
+<p>Are you sure you want to delete {{ airport.code }}?</p>
+<form method="POST">{% csrf_token %}
+  <button type="submit">Confirm</button>
+</form>
+{% endblock %}

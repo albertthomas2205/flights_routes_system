@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Airports</h2>
+
+<form method="GET">
+  <input type="text" name="q" placeholder="Search by code..." value="{{ query }}">
+  <button type="submit">Search</button>
+</form>
+
+<table border="1">
+  <tr>
+    <th>Code</th>
+    <th>Left</th>
+    <th>Right</th>
+    <th>Left Distance</th>
+    <th>Right Distance</th>
+    {% if user.is_admin %}<th>Actions</th>{% endif %}
+  </tr>
+  {% for a in airports %}
+  <tr>
+    <td>{{ a.code }}</td>
+    <td>{{ a.left }}</td>
+    <td>{{ a.right }}</td>
+    <td>{{ a.left_distance }}</td>
+    <td>{{ a.right_distance }}</td>
+    {% if user.is_admin %}
+    <td>
+      <a href="{% url 'airport_update' a.id %}">Edit</a> |
+      <a href="{% url 'airport_delete' a.id %}">Delete</a>
+    </td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+
+{% if user.is_admin %}
+<br>
+<a href="{% url 'airport_create' %}">Add New Airport</a> |
+<a href="{% url 'add_next_airport' %}">Link Next Airport</a>
+{% endif %}
+{% endblock %}

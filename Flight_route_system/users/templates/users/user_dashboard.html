@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>User Dashboard</h2>
+<p>Welcome, {{ user.username }}! You can view airports and find shortest paths.</p>
+<a href="{% url 'airport_list' %}">View Airports</a> |
+<a href="{% url 'shortest_path' %}">Find Shortest Path</a>
+{% endblock %}

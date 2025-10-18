@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Next Airport</h2>
+<form method="POST">{% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Add Connection</button>
+</form>
+{% endblock %}
