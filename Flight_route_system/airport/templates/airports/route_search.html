@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Airport Route Finder</h2>
+
+<p>
+    <a href="?type=duration_between" {% if search_type == 'duration_between' %}style="font-weight:bold"{% endif %}>Duration Between Airports</a> |
+    <a href="?type=nth_node" {% if search_type == 'nth_node' %}style="font-weight:bold"{% endif %}>Nth Node Search</a> |
+    <a href="?type=longest_route" {% if search_type == 'longest_route' %}style="font-weight:bold"{% endif %}>Longest Route</a>
+</p>
+
+{% if form %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+{% endif %}
+
+{% if result %}
+<h3>Result:</h3>
+<p>{{ result }}</p>
+{% endif %}
+
+{% endblock %}

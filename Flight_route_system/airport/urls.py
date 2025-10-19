@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.airport_list, name='airport_list'),
+    path('route/', views.airport_route_view, name='airport_route'),
     path('create/', views.airport_create, name='airport_create'),
     path('update/<int:pk>/', views.airport_update, name='airport_update'),
     path('delete/<int:pk>/', views.airport_delete, name='airport_delete'),
