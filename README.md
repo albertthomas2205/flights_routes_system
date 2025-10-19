@@ -92,7 +92,9 @@ http://127.0.0.1:8000/
 * Register as a User.
 * Log in to the User Dashboard.
 * View available airports.
+* List the nearest airports based on a selected starting airport.
 * Find the **shortest path** between two airports based on connection distances.
+* Search for routes using the Route Search feature — users can find specific routes, including Nth left/right airport connections starting from a chosen airport.
 * Users have **restricted access** — cannot view or modify admin-only pages or data.
 
 ### 🔐 Role-Based Authentication
